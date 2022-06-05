@@ -1,0 +1,87 @@
+@startuml modelo
+
+note top of Permissao
+A ser criada com os padrões do
+Spring Security
+end note
+class Permissao {
+    authority: String
+}
+
+note top of Usuario
+A ser criado usando os padrões do
+Spring Security
+end note
+class Usuario {
+    nome: String
+    email:String
+    ativo: boolean
+}
+
+note top of UsuarioPermissao
+A ser criada usando os padrões do
+Spring Security
+end note
+class UsuarioPermissao {
+
+}
+
+UsuarioPermissao --> Usuario
+UsuarioPermissao --> Permissao
+
+note top of Categoria
+A categoria representa um agrupador de
+ativos pelo tipo.
+
+Exemplos: Livro, Computador, Monitor, Laptop
+end note
+class Categoria {
+    nome: String
+}
+
+note top of Ativo
+O ativo representa um item de posse
+da itexto.
+
+Data de cadastro pode ser preenchida
+automáticamente
+end note
+class Ativo {
+    nome: String
+    codigo: String
+    descricao: String
+    categoria: Categoria
+    dataCadastro: Date
+}
+
+
+
+Ativo --> Categoria
+
+note top of MembroEquipe
+Representa uma pessoa que pode
+estar de posse do ativo naquele
+momento
+end note
+class MembroEquipe {
+    nome: String
+    ativo: boolean
+}
+
+note top of Alocacao
+A alocação representa com quem o ativo
+está alocado.
+
+No caso de um livro, por exemplo, é um empréstimo
+end note
+class Alocacao {
+    Date dataRetirada
+    Date dataDevolucao
+}
+
+Alocacao --> Ativo
+Alocacao --> MembroEquipe
+
+
+
+@enduml

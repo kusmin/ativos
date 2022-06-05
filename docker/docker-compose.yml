@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+    ativos:
+        container_name: ativos
+        image: mysql:5.7.33
+        environment:
+            - MYSQL_ROOT_PASSWORD=ativos
+            - MYSQL_USER=ativos
+            - MYSQL_PASSWORD=ativos
+            - MYSQL_DATABASE=ativos
+        ports:
+            - 3306:3306
+        
